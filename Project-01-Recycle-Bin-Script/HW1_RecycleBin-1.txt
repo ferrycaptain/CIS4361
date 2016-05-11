@@ -1,0 +1,27 @@
+Brian Batinchok
+David Van Aulen
+Jordan Painter
+
+#!/bin/bash
+
+
+FILE=$1
+
+PWD=$(pwd)
+
+
+
+echo $File
+
+mv $FILE ~/.local/share/Trash/files
+
+
+
+echo "[Trash Info]" > "$HOME/.local/share/Trash/info/$FILE.trashinfo"
+
+echo "Path=$PWD/$FILE" > "$HOME/.local/share/Trash/info/$FILE.trashinfo"
+
+echo "Deletiondate=`date +%FT%T`" >> "$HOME/.local/share/Trash/info/$FILE.trashinfo"
+
+
+echo "File moved to Trash Bin"
