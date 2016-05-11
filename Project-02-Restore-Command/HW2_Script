@@ -1,0 +1,45 @@
+Brian Batinchok
+David Van Aulen
+Jordan Painter
+
+
+#!/bin/bash
+
+while [[ $# > 1 ]]
+do
+	param=$1
+	case $param in
+		-d | --delete)
+		echo "Recycle has been passed"
+		FILE=$1
+		PWD=$(pwd)
+		NOW=$(date +%FT%T)
+
+		echo $File
+		mv $FILE ~/.local/share/Trash/Files
+
+		echo "[Trash Info]" > "$HOME/.local/share/Trash/$FILE.trashinfo"
+		echo "Path=$PWD/$FILE" >> "$HOME/.local/share/Trash/$FILE.trashinfo"
+		echo "Deletiondate=$now" >> "$HOME/.local/share/Trash/$FILE.trashinfo"
+
+		else
+		echo "File does not exist"
+		fi
+		;;
+
+		-r | --restore)
+		FILE=$1
+		if [ -e ~/.local/share/Trash/files/$FILE ]
+		then
+		echo "File will be restored"
+		cp ../.local/share/Trash/files/$FILE ../MyCommands
+		rm ../.local/share/Trash/files/$FILE
+		else
+		echo "File does not exist"
+		fi
+		;;
+		*)
+		echo "I do not understand this parameter"
+		;;
+	esac
+done
